@@ -39,18 +39,18 @@ refs.btnStart.addEventListener('click', () => {
       }
     });
 
-    refs.btnStop.addEventListener('click', handleBtnStop);
-  }, 2000);
+    refs.btnStop.addEventListener('click', () => {
+      isActive = false;
+
+      clearInterval(intId);
+      document.body.style.background = currentColor;
+
+      console.log('stop');
+    });
+  }, 1000);
 });
 
-function handleBtnStop() {
-  isActive = false;
-
-  clearInterval(intId);
-  document.body.style.background = currentColor;
-
-  console.log('stop');
-}
+function handleBtnStop() {}
 
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
