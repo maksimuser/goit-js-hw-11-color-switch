@@ -12,7 +12,8 @@ const colors = [
   '#FF00FF',
 ];
 
-let defaultBodyColor = (document.body.style.background = '#858585');
+let defaultBodyColor = (document.body.style.backgroundColor = '#858585');
+console.dir(document.body);
 
 const refs = {
   btnStart: document.querySelector('button[data-action="start"]'),
@@ -40,7 +41,7 @@ const switchColors = {
 
       colors.map((el, ind) => {
         if (currentIndex === ind) {
-          document.body.style.background = el;
+          document.body.style.backgroundColor = el;
           currentColor = el;
         }
       });
