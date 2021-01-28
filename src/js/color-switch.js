@@ -12,24 +12,23 @@ const refs = {
   btnStop: document.querySelector('button[data-action="stop"]'),
 };
 
+refs.btnStop.disabled = true;
+
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 const switchColors = {
-  isActive: false,
   intervalId: null,
 
   start() {
-    if (this.isActive) {
-      return;
-    }
-    this.isActive = true;
+    // console.dir('start', refs.btnStart);
 
-    // console.log(refs.btnStart);
+    refs.btnStart.disabled = true;
+    refs.btnStop.disabled = false;
 
     this.intervalId = setInterval(() => {
-      let currentIndex = randomIntegerFromInterval(0, colors.length - 1);
+      const currentIndex = randomIntegerFromInterval(0, colors.length - 1);
       // console.log(currentIndex);
 
       colors.map((el, ind) => {
@@ -42,14 +41,13 @@ const switchColors = {
   },
 
   stop() {
-    clearInterval(this.intervalId);
-    if (!this.isActive) {
-      return;
-    }
-    this.intervalId = null;
-    this.isActive = false;
+    // console.dir('stop', refs.btnStop);
 
-    // console.log(refs.btnStop);
+    refs.btnStop.disabled = true;
+    refs.btnStart.disabled = false;
+
+    clearInterval(this.intervalId);
+    this.intervalId = null;
   },
 };
 
